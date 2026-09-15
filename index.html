@@ -34,7 +34,6 @@
     line-height: 1.45;
   }
 
-  /* Banner: CONCEPT */
   .concept-banner {
     background: linear-gradient(90deg, #0c4a6e 0%, #0f766e 55%, #5b21b6 100%);
     color: #fff;
@@ -98,7 +97,6 @@
   .dot.compose { background: var(--compose); }
   .dot.audit { background: var(--audit); }
 
-  /* Context toggle */
   .context-bar {
     display: flex;
     flex-wrap: wrap;
@@ -147,7 +145,6 @@
     border-radius: 8px;
   }
 
-  /* App shell */
   .app {
     background: var(--panel);
     border: 1px solid var(--line);
@@ -156,7 +153,6 @@
     overflow: hidden;
   }
 
-  /* FIXED CHASSIS */
   .chassis {
     background: linear-gradient(180deg, #0c4a6e 0%, #075985 100%);
     color: #fff;
@@ -241,7 +237,6 @@
     font-size: 11px;
   }
 
-  /* Generative workspace */
   .workspace {
     padding: 20px 18px 22px;
     background: linear-gradient(180deg, #f8fafc 0%, #fff 40%);
@@ -360,7 +355,6 @@
     font-weight: 600;
   }
 
-  /* Main layout after compose */
   .body-grid {
     display: grid;
     grid-template-columns: 1fr 280px;
@@ -409,26 +403,26 @@
     margin-inline: auto;
   }
 
-  /* Next-best actions */
-  .nba-section { margin-bottom: 20px; display: none; }
-  .nba-section.visible { display: block; }
+  .steps-section { margin-bottom: 20px; display: none; }
+  .steps-section.visible { display: block; }
   .section-h {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
     margin: 0 0 10px;
     font-size: 13px;
     font-weight: 750;
     color: var(--ink);
   }
-  .nba-strip {
+  .steps-strip {
     display: flex;
     gap: 10px;
     overflow-x: auto;
     padding-bottom: 4px;
     scrollbar-width: thin;
   }
-  .nba-card {
+  .step-card {
     flex: 0 0 auto;
     min-width: 200px;
     max-width: 240px;
@@ -438,7 +432,7 @@
     padding: 12px 14px;
     border-left: 3px solid var(--compose);
   }
-  .nba-card .nba-rank {
+  .step-card .step-rank {
     font-size: 10px;
     font-weight: 750;
     color: var(--compose);
@@ -446,19 +440,29 @@
     letter-spacing: .04em;
     margin-bottom: 4px;
   }
-  .nba-card .nba-title {
+  .step-card .step-title {
     font-size: 13px;
     font-weight: 700;
     margin-bottom: 4px;
   }
-  .nba-card .nba-why {
+  .step-card .step-why {
     font-size: 12px;
     color: var(--muted);
   }
 
-  /* Marketplace grid */
   .market-section { display: none; }
   .market-section.visible { display: block; }
+  .rank-line {
+    width: 100%;
+    font-size: 12px;
+    font-weight: 650;
+    color: var(--compose);
+    background: var(--compose-soft);
+    border: 1px solid #99f6e4;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 0 0 12px;
+  }
   .market-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -506,18 +510,30 @@
     font-weight: 700;
     flex-shrink: 0;
   }
+
   .cat-nav { background: #e0f2fe; color: #0369a1; }
   .cat-behavioral { background: #fce7f3; color: #9d174d; }
   .cat-specialty { background: #ecfdf5; color: #047857; }
   .cat-benefits { background: #fef3c7; color: #b45309; }
+  .cat-msk { background: #ffedd5; color: #c2410c; }
+  .cat-metabolic { background: #dcfce7; color: #15803d; }
+  .cat-fertility { background: #fce7f3; color: #be185d; }
+  .cat-cardio { background: #fee2e2; color: #b91c1c; }
+  .cat-pharmacy { background: #e0e7ff; color: #4338ca; }
+  .cat-protocol { background: #f3e8ff; color: #6d28d9; }
+  .cat-clinic { background: #e0f2fe; color: #075985; }
+  .cat-education { background: #fef9c3; color: #a16207; }
+  .cat-payment { background: #d1fae5; color: #047857; }
+  .cat-messaging { background: #ede9fe; color: #5b21b6; }
+  .cat-labs { background: #ecfeff; color: #0e7490; }
 
   .cat-badge {
-    font-size: 10px;
-    font-weight: 750;
+    font-size: 11px;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: .04em;
-    padding: 3px 7px;
-    border-radius: 6px;
+    letter-spacing: .05em;
+    padding: 5px 9px;
+    border-radius: 7px;
     background: #f1f5f9;
     color: var(--muted);
   }
@@ -525,16 +541,30 @@
   .cat-badge.behavioral { background: #fce7f3; color: #9d174d; }
   .cat-badge.specialty { background: #ecfdf5; color: #047857; }
   .cat-badge.benefits { background: #fef3c7; color: #b45309; }
+  .cat-badge.msk { background: #ffedd5; color: #c2410c; }
+  .cat-badge.metabolic { background: #dcfce7; color: #15803d; }
+  .cat-badge.fertility { background: #fce7f3; color: #be185d; }
+  .cat-badge.cardio { background: #fee2e2; color: #b91c1c; }
+  .cat-badge.pharmacy { background: #e0e7ff; color: #4338ca; }
+  .cat-badge.protocol { background: #f3e8ff; color: #6d28d9; }
+  .cat-badge.clinic { background: #e0f2fe; color: #075985; }
+  .cat-badge.education { background: #fef9c3; color: #a16207; }
+  .cat-badge.payment { background: #d1fae5; color: #047857; }
+  .cat-badge.messaging { background: #ede9fe; color: #5b21b6; }
+  .cat-badge.labs { background: #ecfeff; color: #0e7490; }
 
-  .mod-name {
-    font-size: 14px;
-    font-weight: 750;
+  .mod-category-title {
+    font-size: 15px;
+    font-weight: 800;
     margin: 0;
+    letter-spacing: -.01em;
+    color: var(--ink);
   }
   .mod-vendor {
     font-size: 11px;
-    color: var(--muted);
-    margin: -4px 0 0;
+    color: #94a3b8;
+    font-weight: 500;
+    margin: -2px 0 0;
   }
   .mod-why {
     font-size: 12px;
@@ -576,7 +606,6 @@
     white-space: nowrap;
   }
 
-  /* Audit strip */
   .audit-col {
     background: #faf8ff;
     padding: 16px;
@@ -650,7 +679,6 @@
     border-radius: 4px;
   }
 
-  /* Footer */
   .app-footer {
     background: #f8fafc;
     border-top: 1px solid var(--line);
@@ -739,18 +767,19 @@
           <p>Pick a scenario chip or type an intent. The model will assemble suggested next steps and a marketplace of point-solution modules.</p>
         </div>
 
-        <div class="nba-section" id="nba-section">
+        <div class="steps-section" id="steps-section">
           <div class="section-h">
             <span class="zone-label compose" style="margin:0">Suggested next steps</span>
           </div>
-          <div class="nba-strip" id="nba-strip"></div>
+          <div class="steps-strip" id="steps-strip"></div>
         </div>
 
         <div class="market-section" id="market-section">
           <div class="section-h">
-            <span class="zone-label compose" style="margin:0">Marketplace modules</span>
-            <span style="font-size:12px;color:var(--muted);font-weight:500;">Point solutions matched to this intent</span>
+            <span class="zone-label compose" style="margin:0" id="market-zone-label">Marketplace modules</span>
+            <span style="font-size:12px;color:var(--muted);font-weight:500;" id="market-hint">Point solutions matched to this intent</span>
           </div>
+          <p class="rank-line" id="rank-line">Ranked by fit to this member’s ask — never by contract value.</p>
           <div class="market-grid" id="market-grid"></div>
         </div>
       </div>
@@ -769,19 +798,19 @@
     </div>
 
     <footer class="app-footer">
-      <strong>Concept for LinkedIn thought leadership</strong> — not a shipped marketplace · fictional vendors · Demo only
+      <strong>Concept for LinkedIn thought leadership</strong> — not a shipped marketplace · fictional demo partners · Demo only
     </footer>
   </div>
 
   <p class="page-footer">
-    No HIPAA claims · No real competitor logos · Generic clinical language only · © concept mockup
+    No HIPAA claims · No real competitor logos · Fictional demo names only · © concept mockup
   </p>
 </div>
 
 <script>
 (function () {
-  const CATALOG_VERSION = "catalog-v0.4.2-demo";
-  const COMPOSER_VERSION = "compose-engine-demo-1.3";
+  const CATALOG_VERSION = "catalog-v0.5.0-demo";
+  const COMPOSER_VERSION = "compose-engine-demo-1.4";
 
   const personas = {
     plan: {
@@ -790,11 +819,12 @@
       name: "Jordan M.",
       avatar: "JM",
       chips: [
-        { id: "pcp", label: "Find a new PCP", prompt: "I need to find a new primary care doctor near me" },
-        { id: "mental", label: "Mental health support", prompt: "I'd like confidential mental health support options" },
-        { id: "rx", label: "Refill & pharmacy", prompt: "Help me manage prescriptions and find lower-cost pharmacy options" },
-        { id: "benefits", label: "Check benefits", prompt: "What are my benefits for specialty care and labs this year?" },
-        { id: "chronic", label: "Manage a condition", prompt: "Help me stay on track with my care plan, labs, and appointments" }
+        { id: "msk", label: "MSK pain", prompt: "I have musculoskeletal pain and need MSK support options" },
+        { id: "metabolic", label: "Metabolic support", prompt: "I need metabolic support for weight and blood sugar goals" },
+        { id: "fertility", label: "Family building / fertility", prompt: "Help me explore family building and fertility benefits" },
+        { id: "mental", label: "Mental health", prompt: "I'd like confidential mental health support options" },
+        { id: "nav", label: "Care navigation", prompt: "Help me navigate where to go for care" },
+        { id: "benefits", label: "Check benefits", prompt: "What are my benefits for specialty care and pharmacy this year?" }
       ]
     },
     cash: {
@@ -804,181 +834,262 @@
       avatar: "AR",
       chips: [
         { id: "visit", label: "Book a visit", prompt: "I want to book a same-week visit and see cash pricing upfront" },
-        { id: "labs", label: "Order labs", prompt: "I need labs ordered and results explained in plain language" },
-        { id: "wellness", label: "Wellness & habits", prompt: "Help me build better sleep and stress habits with coaching" },
-        { id: "specialty", label: "Specialty referral", prompt: "I need a specialty referral and help coordinating follow-up" },
-        { id: "track", label: "Stay on protocol", prompt: "Help me track adherence, upcoming labs, and my visit schedule" }
+        { id: "labs", label: "Review labs", prompt: "I need to review my labs in plain language" },
+        { id: "careplan", label: "Understand my care plan", prompt: "Help me understand my care plan and stay on protocol" },
+        { id: "refill", label: "Refill / pharmacy", prompt: "I need a refill and pharmacy coordination" },
+        { id: "message", label: "Message care team", prompt: "I want to message my care team about a question" },
+        { id: "pay", label: "Pay a balance", prompt: "I need to pay a balance and see a fair estimate" }
       ]
     }
   };
 
-  // Module catalog — fictional vendors
-  const MODULES = {
-    "find-care": {
-      name: "Care Finder",
-      vendor: "Pathly",
-      category: "nav",
-      icon: "◎",
-      why: { plan: "In-network PCPs within 8 mi matching your preferences", cash: "Local clinicians with transparent cash rates" }
+  // Plan vendor marketplace — fictional demo partners only
+  const PLAN_MODULES = {
+    "northstar-msk": {
+      category: "msk",
+      categoryLabel: "MSK",
+      vendor: "Northstar MSK (demo)",
+      icon: "🦴",
+      why: "Matches MSK pain intent with guided recovery pathways"
     },
-    "symptom-triage": {
-      name: "Symptom Guide",
-      vendor: "Clarion Health",
-      category: "nav",
-      icon: "✚",
-      why: { plan: "Routes non-urgent concerns before ER use", cash: "Helps decide visit vs. self-care before booking" }
+    "harbor-metabolic": {
+      category: "metabolic",
+      categoryLabel: "Metabolic",
+      vendor: "Harbor Metabolic (demo)",
+      icon: "⚗",
+      why: "Metabolic coaching aligned to member goals"
     },
-    "bh-access": {
-      name: "Behavioral Access",
-      vendor: "Mindbridge",
+    "juniper-fertility": {
+      category: "fertility",
+      categoryLabel: "Fertility",
+      vendor: "Juniper Family Health (demo)",
+      icon: "✿",
+      why: "Family-building benefits and fertility navigation"
+    },
+    "brightpath-bh": {
       category: "behavioral",
+      categoryLabel: "Behavioral",
+      vendor: "Brightpath Behavioral (demo)",
       icon: "◉",
-      why: { plan: "Confidential counseling slots with plan coverage flags", cash: "Cash-rate therapists & coaches with availability" }
+      why: "Confidential behavioral access with coverage flags"
     },
-    "coaching": {
-      name: "Habit Coach",
-      vendor: "Stridewell",
-      category: "behavioral",
-      icon: "△",
-      why: { plan: "Sleep & stress coaching covered under wellness benefit", cash: "Short coaching packs with clear cash pricing" }
+    "pulseway-cardio": {
+      category: "cardio",
+      categoryLabel: "Cardio",
+      vendor: "Pulseway Cardio (demo)",
+      icon: "♥",
+      why: "Cardio risk education adjacent to metabolic asks"
     },
-    "rx-savings": {
-      name: "Rx Navigator",
-      vendor: "Pillwise",
-      category: "benefits",
-      icon: "℞",
-      why: { plan: "Formulary + lower-cost pharmacy alternatives", cash: "Cash coupon & pharmacy price compare" }
-    },
-    "benefits-lens": {
-      name: "Benefits Lens",
-      vendor: "Coveright",
-      category: "benefits",
-      icon: "$",
-      why: { plan: "Remaining deductible & specialty/lab coverage snapshot", cash: "Visit & lab price sheet for this clinic" }
-    },
-    "specialty-coord": {
-      name: "Specialty Bridge",
-      vendor: "Referly",
-      category: "specialty",
-      icon: "◈",
-      why: { plan: "In-network specialty slots + prior-auth status", cash: "Referral packet + cash specialist options" }
-    },
-    "protocol-tracker": {
-      name: "Protocol Tracker",
-      vendor: "Continuum Labs",
-      category: "specialty",
-      icon: "▣",
-      why: { plan: "Adherence check-ins, lab reminders, visit schedule", cash: "Adherence, labs, and schedule in one care board" }
-    },
-    "lab-results": {
-      name: "Lab Explainer",
-      vendor: "Plainlab",
-      category: "specialty",
-      icon: "▦",
-      why: { plan: "Plain-language results tied to your care plan", cash: "Order status + plain-language result summary" }
-    },
-    "urgent-alt": {
-      name: "Care Alternatives",
-      vendor: "RightSite",
+    "compass-nav": {
       category: "nav",
-      icon: "⚡",
-      why: { plan: "Urgent care & virtual options vs. ER", cash: "Same-day slots vs. after-hours options" }
+      categoryLabel: "Nav",
+      vendor: "Compass Care Nav (demo)",
+      icon: "◎",
+      why: "Routes the member to the right site of care"
+    },
+    "ridgeway-specialty": {
+      category: "specialty",
+      categoryLabel: "Specialty",
+      vendor: "Ridgeway Specialty (demo)",
+      icon: "◈",
+      why: "Specialty slots and prior-auth status for the plan"
+    },
+    "lantern-pharmacy": {
+      category: "pharmacy",
+      categoryLabel: "Pharmacy",
+      vendor: "Lantern Pharmacy (demo)",
+      icon: "℞",
+      why: "Formulary-aware pharmacy alternatives"
+    },
+    "clearview-benefits": {
+      category: "benefits",
+      categoryLabel: "Benefits",
+      vendor: "Clearview Benefits (demo)",
+      icon: "$",
+      why: "Remaining deductible and covered-service snapshot"
+    },
+    "orbit-protocol": {
+      category: "protocol",
+      categoryLabel: "Protocol",
+      vendor: "Orbit Protocol Tracker (demo)",
+      icon: "▣",
+      why: "Adherence check-ins, lab reminders, visit schedule"
     }
   };
 
-  // Scenario → NBA + module IDs
-  const SCENARIOS = {
-    // plan
-    pcp: {
-      match: /pcp|primary|doctor|find.*care|new.*doctor/i,
-      nbas: [
-        { rank: "1 · Next", title: "Confirm preferred ZIP & hours", why: "Narrows Care Finder results" },
-        { rank: "2", title: "Review in-network filters", why: "Avoids surprise out-of-network" },
-        { rank: "3", title: "Book intro visit", why: "Locks a slot once you pick" }
+  // Cash-pay clinic inventory — DISTINCT from plan vendor marketplace
+  const CLINIC_MODULES = {
+    "clinicdesk-scheduling": {
+      category: "clinic",
+      categoryLabel: "Scheduling",
+      vendor: "ClinicDesk Scheduling (demo)",
+      icon: "📅",
+      why: "Same-week slots with transparent cash rates"
+    },
+    "labplain-results": {
+      category: "labs",
+      categoryLabel: "Labs",
+      vendor: "LabPlain Results (demo)",
+      icon: "▦",
+      why: "Plain-language lab review for this clinic"
+    },
+    "carethread-messaging": {
+      category: "messaging",
+      categoryLabel: "Messaging",
+      vendor: "CareThread Messaging (demo)",
+      icon: "✉",
+      why: "Secure thread to the clinic care team"
+    },
+    "fairestimate-pay": {
+      category: "payment",
+      categoryLabel: "Payment",
+      vendor: "FairEstimate Pay (demo)",
+      icon: "💳",
+      why: "Balance due plus fair cash estimate"
+    },
+    "refill-lane": {
+      category: "pharmacy",
+      categoryLabel: "Pharmacy",
+      vendor: "RefillLane Desk (demo)",
+      icon: "℞",
+      why: "Clinic refill coordination — not a plan PBM market"
+    },
+    "careplan-board": {
+      category: "protocol",
+      categoryLabel: "Protocol",
+      vendor: "CarePlan Board (demo)",
+      icon: "▣",
+      why: "Care-plan adherence board for this clinic"
+    },
+    "learnwell-education": {
+      category: "education",
+      categoryLabel: "Education",
+      vendor: "LearnWell Education (demo)",
+      icon: "📘",
+      why: "Short education packs tied to the care plan"
+    },
+    "clinic-specialty": {
+      category: "specialty",
+      categoryLabel: "Specialty",
+      vendor: "Clinic Specialty Desk (demo)",
+      icon: "◈",
+      why: "Specialty referral packet from this clinic"
+    }
+  };
+
+  // Plan scenarios — compose relevant PLAN_MODULES subsets only
+  const PLAN_SCENARIOS = {
+    msk: {
+      match: /msk|musculo|back pain|joint|ortho|physical therapy|pt\b/i,
+      steps: [
+        { rank: "1 · Next", title: "Describe pain location & duration", why: "Shapes MSK module fit" },
+        { rank: "2", title: "Prefer virtual vs. in-clinic PT", why: "Filters Northstar MSK inventory" },
+        { rank: "3", title: "Confirm plan coverage flags", why: "Clearview Benefits snapshot" }
       ],
-      modules: ["find-care", "symptom-triage", "benefits-lens", "urgent-alt"]
+      modules: ["northstar-msk", "compass-nav", "clearview-benefits", "orbit-protocol"]
+    },
+    metabolic: {
+      match: /metabolic|weight|blood sugar|glucose|a1c|diabetes|nutrition/i,
+      steps: [
+        { rank: "1 · Next", title: "Set a metabolic goal", why: "Routes Harbor Metabolic" },
+        { rank: "2", title: "Review related cardio education", why: "Pulseway Cardio adjacency" },
+        { rank: "3", title: "Schedule adherence check-ins", why: "Orbit Protocol Tracker" }
+      ],
+      modules: ["harbor-metabolic", "pulseway-cardio", "orbit-protocol", "clearview-benefits"]
+    },
+    fertility: {
+      match: /fertility|family building|ivf|conception|pregnancy planning/i,
+      steps: [
+        { rank: "1 · Next", title: "Open fertility benefit summary", why: "Juniper Family Health" },
+        { rank: "2", title: "Check covered specialty steps", why: "Ridgeway Specialty + Benefits" },
+        { rank: "3", title: "Optional care navigation", why: "Compass Care Nav" }
+      ],
+      modules: ["juniper-fertility", "clearview-benefits", "ridgeway-specialty", "compass-nav"]
     },
     mental: {
       match: /mental|counsel|therap|behavioral|stress|anxiety|depression/i,
-      nbas: [
-        { rank: "1 · Next", title: "Choose modality (video / in-person)", why: "Shapes Behavioral Access inventory" },
-        { rank: "2", title: "Confirm coverage flags", why: "Shows what the plan covers" },
-        { rank: "3", title: "Optional habit coaching", why: "Pairs therapy with daily support" }
+      steps: [
+        { rank: "1 · Next", title: "Choose modality (video / in-person)", why: "Brightpath Behavioral inventory" },
+        { rank: "2", title: "Confirm coverage flags", why: "Clearview Benefits" },
+        { rank: "3", title: "Optional care navigation", why: "If acuity changes" }
       ],
-      modules: ["bh-access", "coaching", "benefits-lens", "symptom-triage"]
+      modules: ["brightpath-bh", "clearview-benefits", "compass-nav", "orbit-protocol"]
     },
-    rx: {
-      match: /refill|rx|pharm|prescription|medication/i,
-      nbas: [
-        { rank: "1 · Next", title: "List active prescriptions", why: "Feeds Rx Navigator" },
-        { rank: "2", title: "Compare pharmacy prices", why: "Surfaces lower-cost options" },
-        { rank: "3", title: "Set refill reminders", why: "Reduces missed doses" }
+    nav: {
+      match: /navigat|where to go|find care|right care|care nav|triage/i,
+      steps: [
+        { rank: "1 · Next", title: "Describe the concern", why: "Compass Care Nav routing" },
+        { rank: "2", title: "See site-of-care options", why: "Avoids unnecessary ER" },
+        { rank: "3", title: "Check benefits before booking", why: "Clearview Benefits" }
       ],
-      modules: ["rx-savings", "protocol-tracker", "benefits-lens", "find-care"]
+      modules: ["compass-nav", "clearview-benefits", "ridgeway-specialty", "brightpath-bh"]
     },
     benefits: {
-      match: /benefit|coverage|deductible|cost|what.*covered/i,
-      nbas: [
-        { rank: "1 · Next", title: "Open benefits snapshot", why: "Deductible & specialty/lab remaining" },
-        { rank: "2", title: "Estimate a specialty visit", why: "Uses Benefits Lens calculator" },
-        { rank: "3", title: "Save preferred facilities", why: "Speeds future estimates" }
+      match: /benefit|coverage|deductible|cost|what.*covered|pharmacy this year/i,
+      steps: [
+        { rank: "1 · Next", title: "Open benefits snapshot", why: "Clearview Benefits" },
+        { rank: "2", title: "Check pharmacy alternatives", why: "Lantern Pharmacy" },
+        { rank: "3", title: "Estimate a specialty visit", why: "Ridgeway Specialty" }
       ],
-      modules: ["benefits-lens", "specialty-coord", "lab-results", "rx-savings"]
-    },
-    chronic: {
-      match: /condition|chronic|care plan|track|adherence|protocol|labs|schedule|manage/i,
-      nbas: [
-        { rank: "1 · Next", title: "Review adherence streak", why: "Protocol Tracker highlight" },
-        { rank: "2", title: "Upcoming labs & visits", why: "Calendar + reminders" },
-        { rank: "3", title: "Message care team", why: "If something looks off" }
-      ],
-      modules: ["protocol-tracker", "lab-results", "specialty-coord", "coaching", "rx-savings"]
-    },
-    // cash
+      modules: ["clearview-benefits", "lantern-pharmacy", "ridgeway-specialty", "compass-nav"]
+    }
+  };
+
+  // Clinic scenarios — compose relevant CLINIC_MODULES subsets only
+  const CLINIC_SCENARIOS = {
     visit: {
-      match: /book|visit|appointment|same.?week|see.*(doctor|clinician)/i,
-      nbas: [
-        { rank: "1 · Next", title: "See cash price sheet", why: "No surprise fees" },
-        { rank: "2", title: "Pick a same-week slot", why: "Care Finder + clinic calendar" },
-        { rank: "3", title: "Pre-visit questionnaire", why: "Shortens time in clinic" }
+      match: /book|visit|appointment|same.?week|see.*(doctor|clinician)|scheduling/i,
+      steps: [
+        { rank: "1 · Next", title: "See cash price sheet", why: "FairEstimate Pay" },
+        { rank: "2", title: "Pick a same-week slot", why: "ClinicDesk Scheduling" },
+        { rank: "3", title: "Optional pre-visit education", why: "LearnWell Education" }
       ],
-      modules: ["find-care", "benefits-lens", "symptom-triage", "urgent-alt"]
+      modules: ["clinicdesk-scheduling", "fairestimate-pay", "learnwell-education", "carethread-messaging"]
     },
     labs: {
-      match: /lab|blood|results|order labs/i,
-      nbas: [
-        { rank: "1 · Next", title: "Select lab panel", why: "Cash menu with clear prices" },
-        { rank: "2", title: "Schedule draw", why: "Clinic or partner site" },
-        { rank: "3", title: "Get plain-language results", why: "Lab Explainer when ready" }
+      match: /lab|blood|results|review labs/i,
+      steps: [
+        { rank: "1 · Next", title: "Open plain-language results", why: "LabPlain Results" },
+        { rank: "2", title: "Ask the care team a question", why: "CareThread Messaging" },
+        { rank: "3", title: "Update care-plan board", why: "CarePlan Board" }
       ],
-      modules: ["lab-results", "protocol-tracker", "benefits-lens", "find-care"]
+      modules: ["labplain-results", "careplan-board", "carethread-messaging", "learnwell-education"]
     },
-    wellness: {
-      match: /wellness|habit|sleep|coach|stress habit/i,
-      nbas: [
-        { rank: "1 · Next", title: "Pick a focus (sleep / stress)", why: "Routes Habit Coach pack" },
-        { rank: "2", title: "Set weekly check-ins", why: "Light accountability" },
-        { rank: "3", title: "Optional clinician review", why: "If symptoms escalate" }
+    careplan: {
+      match: /care plan|protocol|adherence|understand my care|stay on/i,
+      steps: [
+        { rank: "1 · Next", title: "Open care-plan board", why: "CarePlan Board" },
+        { rank: "2", title: "Review related education", why: "LearnWell Education" },
+        { rank: "3", title: "Message if something looks off", why: "CareThread Messaging" }
       ],
-      modules: ["coaching", "bh-access", "protocol-tracker", "symptom-triage"]
+      modules: ["careplan-board", "learnwell-education", "labplain-results", "carethread-messaging"]
     },
-    specialty: {
-      match: /specialt|referral|coordinat|follow.?up/i,
-      nbas: [
-        { rank: "1 · Next", title: "Build referral packet", why: "Specialty Bridge prep" },
-        { rank: "2", title: "Compare cash specialists", why: "Transparent rates" },
-        { rank: "3", title: "Schedule follow-up here", why: "Closes the loop" }
+    refill: {
+      match: /refill|rx|pharm|prescription|medication/i,
+      steps: [
+        { rank: "1 · Next", title: "Request refill coordination", why: "RefillLane Desk" },
+        { rank: "2", title: "Confirm care-plan meds", why: "CarePlan Board" },
+        { rank: "3", title: "Message pharmacy questions", why: "CareThread Messaging" }
       ],
-      modules: ["specialty-coord", "lab-results", "protocol-tracker", "find-care"]
+      modules: ["refill-lane", "careplan-board", "carethread-messaging", "fairestimate-pay"]
     },
-    track: {
-      match: /protocol|adherence|stay on|tracker/i,
-      nbas: [
-        { rank: "1 · Next", title: "Open care board", why: "Adherence · labs · schedule" },
-        { rank: "2", title: "Confirm next lab date", why: "Avoids gaps" },
-        { rank: "3", title: "Nudge preferences", why: "SMS vs. app reminders" }
+    message: {
+      match: /message|care team|ask.*(nurse|doctor|clinician)|chat|thread/i,
+      steps: [
+        { rank: "1 · Next", title: "Start a secure thread", why: "CareThread Messaging" },
+        { rank: "2", title: "Attach recent labs if relevant", why: "LabPlain Results" },
+        { rank: "3", title: "Book follow-up if needed", why: "ClinicDesk Scheduling" }
       ],
-      modules: ["protocol-tracker", "lab-results", "rx-savings", "coaching"]
+      modules: ["carethread-messaging", "clinicdesk-scheduling", "labplain-results", "learnwell-education"]
+    },
+    pay: {
+      match: /pay|balance|estimate|invoice|bill|cash price/i,
+      steps: [
+        { rank: "1 · Next", title: "View balance & fair estimate", why: "FairEstimate Pay" },
+        { rank: "2", title: "Confirm upcoming visit fees", why: "ClinicDesk Scheduling" },
+        { rank: "3", title: "Ask billing via care team", why: "CareThread Messaging" }
+      ],
+      modules: ["fairestimate-pay", "clinicdesk-scheduling", "carethread-messaging", "clinic-specialty"]
     }
   };
 
@@ -990,8 +1101,8 @@
   const chipsEl = $("chips");
   const statusEl = $("status");
   const emptyEl = $("empty");
-  const nbaSection = $("nba-section");
-  const nbaStrip = $("nba-strip");
+  const stepsSection = $("steps-section");
+  const stepsStrip = $("steps-strip");
   const marketSection = $("market-section");
   const marketGrid = $("market-grid");
   const auditIdle = $("audit-idle");
@@ -999,6 +1110,14 @@
   const auditMeta = $("audit-meta");
   const auditList = $("audit-list");
   const btnCompose = $("btn-compose");
+
+  function catalogForCtx() {
+    return ctx === "plan" ? PLAN_MODULES : CLINIC_MODULES;
+  }
+
+  function scenariosForCtx() {
+    return ctx === "plan" ? PLAN_SCENARIOS : CLINIC_SCENARIOS;
+  }
 
   function setContext(next) {
     ctx = next;
@@ -1010,6 +1129,10 @@
     $("persona-label").textContent = p.label;
     $("account-name").textContent = p.name;
     $("avatar").textContent = p.avatar;
+    $("market-zone-label").textContent = next === "plan" ? "Marketplace modules" : "Clinic modules";
+    $("market-hint").textContent = next === "plan"
+      ? "Plan point solutions matched to this intent"
+      : "Clinic inventory matched to this intent (not the plan marketplace)";
     renderChips();
     resetCompose();
   }
@@ -1033,11 +1156,11 @@
 
   function resetCompose() {
     emptyEl.style.display = "";
-    nbaSection.classList.remove("visible");
+    stepsSection.classList.remove("visible");
     marketSection.classList.remove("visible");
     auditIdle.style.display = "";
     auditBlock.classList.remove("visible");
-    nbaStrip.innerHTML = "";
+    stepsStrip.innerHTML = "";
     marketGrid.innerHTML = "";
     statusEl.textContent = "";
     statusEl.className = "status-line";
@@ -1046,16 +1169,13 @@
 
   function resolveScenario(text) {
     const t = text.trim();
-    for (const key of Object.keys(SCENARIOS)) {
-      if (SCENARIOS[key].match.test(t)) return { key, ...SCENARIOS[key] };
+    const scenarios = scenariosForCtx();
+    for (const key of Object.keys(scenarios)) {
+      if (scenarios[key].match.test(t)) return { key, ...scenarios[key] };
     }
-    // default fallback by context
-    if (ctx === "cash") return { key: "visit", ...SCENARIOS.visit };
-    return { key: "pcp", ...SCENARIOS.pcp };
-  }
-
-  function catLabel(cat) {
-    return ({ nav: "Nav", behavioral: "Behavioral", specialty: "Specialty", benefits: "Benefits" })[cat] || cat;
+    // Context-aware fallback — never cross plan/clinic catalogs
+    if (ctx === "cash") return { key: "visit", ...CLINIC_SCENARIOS.visit };
+    return { key: "nav", ...PLAN_SCENARIOS.nav };
   }
 
   function compose() {
@@ -1067,38 +1187,38 @@
     statusEl.textContent = "Composing workspace from intent · matching catalog modules…";
 
     emptyEl.style.display = "none";
-    nbaSection.classList.remove("visible");
+    stepsSection.classList.remove("visible");
     marketSection.classList.remove("visible");
     auditIdle.style.display = "none";
     auditBlock.classList.remove("visible");
 
     const scenario = resolveScenario(text);
+    const catalog = catalogForCtx();
 
     setTimeout(() => {
-      // NBA
-      nbaStrip.innerHTML = "";
-      scenario.nbas.forEach((n) => {
+      stepsStrip.innerHTML = "";
+      scenario.steps.forEach((n) => {
         const d = document.createElement("div");
-        d.className = "nba-card";
-        d.innerHTML = `<div class="nba-rank">${n.rank}</div><div class="nba-title">${n.title}</div><div class="nba-why">${n.why}</div>`;
-        nbaStrip.appendChild(d);
+        d.className = "step-card";
+        d.innerHTML = `<div class="step-rank">${n.rank}</div><div class="step-title">${n.title}</div><div class="step-why">${n.why}</div>`;
+        stepsStrip.appendChild(d);
       });
-      nbaSection.classList.add("visible");
+      stepsSection.classList.add("visible");
 
-      // Marketplace
       marketGrid.innerHTML = "";
       scenario.modules.forEach((id) => {
-        const m = MODULES[id];
+        const m = catalog[id];
+        if (!m) return;
         const card = document.createElement("article");
         card.className = "mod-card";
         card.innerHTML = `
           <div class="mod-top">
             <div class="mod-icon cat-${m.category}">${m.icon}</div>
-            <span class="cat-badge ${m.category}">${catLabel(m.category)}</span>
+            <span class="cat-badge ${m.category}">${m.categoryLabel}</span>
           </div>
-          <h3 class="mod-name">${m.name}</h3>
-          <p class="mod-vendor">${m.vendor} · point solution</p>
-          <p class="mod-why"><strong>Why recommended:</strong> ${m.why[ctx]}</p>
+          <h3 class="mod-category-title">${m.categoryLabel}</h3>
+          <p class="mod-vendor">${m.vendor}</p>
+          <p class="mod-why"><strong>Why recommended:</strong> ${m.why}</p>
           <div class="mod-actions">
             <button type="button" class="btn-open" disabled>Open</button>
             <span class="demo-badge">Demo</span>
@@ -1107,13 +1227,12 @@
       });
       marketSection.classList.add("visible");
 
-      // Audit
       const components = [
         { tag: "chassis", text: "Fixed top bar (logo, Account, Help, Urgent care)" },
-        { tag: "steps", text: `Suggested next steps × ${scenario.nbas.length}` },
+        { tag: "steps", text: `Suggested next steps × ${scenario.steps.length}` },
         ...scenario.modules.map((id) => {
-          const m = MODULES[id];
-          return { tag: m.category, text: `${m.name} (${m.vendor})` };
+          const m = catalog[id];
+          return { tag: m.category, text: `${m.categoryLabel} · ${m.vendor}` };
         }),
         { tag: "audit", text: "Composition audit panel" }
       ];
@@ -1121,7 +1240,9 @@
         <dt>Catalog version</dt><dd>${CATALOG_VERSION}</dd>
         <dt>Composer</dt><dd>${COMPOSER_VERSION}</dd>
         <dt>Context</dt><dd>${ctx === "plan" ? "Regional health plan member" : "Cash-pay clinic patient"}</dd>
+        <dt>Inventory</dt><dd>${ctx === "plan" ? "Plan vendor marketplace" : "Clinic module inventory"}</dd>
         <dt>Intent match</dt><dd>${scenario.key} · ${scenario.modules.length} modules</dd>
+        <dt>Ranking</dt><dd>Fit to member ask — never contract value</dd>
         <dt>Prompt</dt><dd style="font-weight:500;word-break:break-word">${escapeHtml(text)}</dd>`;
       auditList.innerHTML = components.map((c) =>
         `<li><span class="tag">${c.tag}</span><span>${c.text}</span></li>`
@@ -1129,7 +1250,7 @@
       auditBlock.classList.add("visible");
 
       statusEl.className = "status-line";
-      statusEl.textContent = `Assembled · ${scenario.modules.length} marketplace modules · ${scenario.nbas.length} suggested next steps`;
+      statusEl.textContent = `Assembled · ${scenario.modules.length} modules · ${scenario.steps.length} suggested next steps · ranked by fit`;
       assembling = false;
       btnCompose.disabled = false;
     }, 720);

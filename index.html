@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CONCEPT / DEMO — Generative Digital Front Door Marketplace</title>
+<style>
+  :root {
+    --bg: #f3f6f9;
+    --panel: #ffffff;
+    --ink: #15202b;
+    --muted: #5a6876;
+    --line: #d5dde6;
+    --fixed: #0c4a6e;
+    --fixed-soft: #e0f2fe;
+    --compose: #0f766e;
+    --compose-soft: #ccfbf1;
+    --audit: #5b21b6;
+    --audit-soft: #f3e8ff;
+    --accent: #0284c7;
+    --accent-soft: #e0f2fe;
+    --warn: #b45309;
+    --warn-soft: #fff7ed;
+    --shadow: 0 1px 2px rgba(15,23,42,.05), 0 10px 28px rgba(15,23,42,.07);
+    --radius: 14px;
+    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.45;
+  }
+
+  /* Banner: CONCEPT */
+  .concept-banner {
+    background: linear-gradient(90deg, #0c4a6e 0%, #0f766e 55%, #5b21b6 100%);
+    color: #fff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 650;
+    letter-spacing: .03em;
+  }
+  .concept-banner span {
+    opacity: .9;
+    font-weight: 500;
+    margin-left: 8px;
+  }
+
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 22px 18px 48px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 6px;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    letter-spacing: -.02em;
+  }
+  .sub {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 68ch;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 11px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot.fixed { background: var(--fixed); }
+  .dot.compose { background: var(--compose); }
+  .dot.audit { background: var(--audit); }
+
+  /* Context toggle */
+  .context-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding: 10px 14px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .context-bar label {
+    font-size: 12px;
+    font-weight: 650;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .toggle {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f8fafc;
+  }
+  .toggle button {
+    border: 0;
+    background: transparent;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .toggle button.active {
+    background: var(--fixed);
+    color: #fff;
+  }
+  .persona-chip {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--muted);
+    background: #f1f5f9;
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+
+  /* App shell */
+  .app {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  /* FIXED CHASSIS */
+  .chassis {
+    background: linear-gradient(180deg, #0c4a6e 0%, #075985 100%);
+    color: #fff;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .chassis::after {
+    content: "FIXED CHASSIS — never moves";
+    position: absolute;
+    top: 6px;
+    right: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.18);
+    color: #e0f2fe;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-weight: 750;
+    font-size: 15px;
+    letter-spacing: -.01em;
+  }
+  .logo-mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #67e8f9, #38bdf8);
+    display: grid;
+    place-items: center;
+    color: #0c4a6e;
+    font-weight: 800;
+    font-size: 13px;
+  }
+  .nav-fixed {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: 140px;
+  }
+  .nav-fixed a {
+    color: #e0f2fe;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 11px;
+    border-radius: 8px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+  }
+  .nav-fixed a.urgent {
+    background: #fef3c7;
+    color: #92400e;
+    border-color: #fcd34d;
+  }
+  .account {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    opacity: .95;
+  }
+  .avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #bae6fd;
+    color: #0c4a6e;
+    display: grid;
+    place-items: center;
+    font-weight: 750;
+    font-size: 11px;
+  }
+
+  /* Generative workspace */
+  .workspace {
+    padding: 20px 18px 22px;
+    background: linear-gradient(180deg, #f8fafc 0%, #fff 40%);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .zone-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  .zone-label.compose {
+    background: var(--compose-soft);
+    color: var(--compose);
+    border: 1px solid #99f6e4;
+  }
+  .zone-label.audit {
+    background: var(--audit-soft);
+    color: var(--audit);
+    border: 1px solid #ddd6fe;
+  }
+  .zone-label.fixed-inline {
+    background: var(--fixed-soft);
+    color: var(--fixed);
+    border: 1px solid #bae6fd;
+  }
+
+  .prompt-wrap {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .prompt-input {
+    flex: 1 1 280px;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 14px;
+    box-shadow: 0 1px 2px rgba(15,23,42,.04);
+  }
+  .prompt-input:focus-within {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(14,165,233,.15);
+  }
+  .prompt-input input {
+    border: 0;
+    outline: 0;
+    width: 100%;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--ink);
+    background: transparent;
+  }
+  .prompt-input input::placeholder { color: #94a3b8; }
+  .btn-compose {
+    background: var(--compose);
+    color: #fff;
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(15,118,110,.3);
+  }
+  .btn-compose:hover { background: #0d9488; }
+  .btn-compose:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .chip {
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color .15s, background .15s;
+  }
+  .chip:hover, .chip.active {
+    border-color: #5eead4;
+    background: var(--compose-soft);
+    color: var(--compose);
+  }
+
+  .status-line {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--muted);
+    min-height: 18px;
+  }
+  .status-line.assembling {
+    color: var(--compose);
+    font-weight: 600;
+  }
+
+  /* Main layout after compose */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 0;
+    min-height: 320px;
+  }
+  @media (max-width: 900px) {
+    .body-grid { grid-template-columns: 1fr; }
+    .chassis::after { position: static; margin-left: auto; }
+    .nav-fixed { margin-right: 0; width: 100%; order: 3; }
+    .persona-chip { margin-left: 0; width: 100%; }
+  }
+
+  .main-col {
+    padding: 18px;
+    border-right: 1px solid var(--line);
+  }
+  @media (max-width: 900px) {
+    .main-col { border-right: 0; border-bottom: 1px solid var(--line); }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--muted);
+  }
+  .empty-state .illus {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 14px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--compose-soft), var(--fixed-soft));
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+  }
+  .empty-state h2 {
+    margin: 0 0 6px;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .empty-state p {
+    margin: 0;
+    font-size: 13px;
+    max-width: 42ch;
+    margin-inline: auto;
+  }
+
+  /* Next-best actions */
+  .nba-section { margin-bottom: 20px; display: none; }
+  .nba-section.visible { display: block; }
+  .section-h {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 750;
+    color: var(--ink);
+  }
+  .nba-strip {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+  }
+  .nba-card {
+    flex: 0 0 auto;
+    min-width: 200px;
+    max-width: 240px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 14px;
+    border-left: 3px solid var(--compose);
+  }
+  .nba-card .nba-rank {
+    font-size: 10px;
+    font-weight: 750;
+    color: var(--compose);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-bottom: 4px;
+  }
+  .nba-card .nba-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .nba-card .nba-why {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* Marketplace grid */
+  .market-section { display: none; }
+  .market-section.visible { display: block; }
+  .market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .mod-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: box-shadow .15s, transform .15s;
+    animation: cardIn .45s ease both;
+  }
+  .mod-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-1px);
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .mod-card:nth-child(1) { animation-delay: .05s; }
+  .mod-card:nth-child(2) { animation-delay: .1s; }
+  .mod-card:nth-child(3) { animation-delay: .15s; }
+  .mod-card:nth-child(4) { animation-delay: .2s; }
+  .mod-card:nth-child(5) { animation-delay: .25s; }
+  .mod-card:nth-child(6) { animation-delay: .3s; }
+
+  .mod-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .mod-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .cat-nav { background: #e0f2fe; color: #0369a1; }
+  .cat-behavioral { background: #fce7f3; color: #9d174d; }
+  .cat-specialty { background: #ecfdf5; color: #047857; }
+  .cat-benefits { background: #fef3c7; color: #b45309; }
+
+  .cat-badge {
+    font-size: 10px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: 3px 7px;
+    border-radius: 6px;
+    background: #f1f5f9;
+    color: var(--muted);
+  }
+  .cat-badge.nav { background: #e0f2fe; color: #0369a1; }
+  .cat-badge.behavioral { background: #fce7f3; color: #9d174d; }
+  .cat-badge.specialty { background: #ecfdf5; color: #047857; }
+  .cat-badge.benefits { background: #fef3c7; color: #b45309; }
+
+  .mod-name {
+    font-size: 14px;
+    font-weight: 750;
+    margin: 0;
+  }
+  .mod-vendor {
+    font-size: 11px;
+    color: var(--muted);
+    margin: -4px 0 0;
+  }
+  .mod-why {
+    font-size: 12px;
+    color: var(--muted);
+    flex: 1;
+  }
+  .mod-why strong {
+    color: var(--compose);
+    font-weight: 650;
+  }
+  .mod-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .btn-open {
+    flex: 1;
+    background: #f1f5f9;
+    color: #94a3b8;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: not-allowed;
+    font-family: inherit;
+  }
+  .demo-badge {
+    font-size: 10px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    background: var(--warn-soft);
+    color: var(--warn);
+    border: 1px solid #fed7aa;
+    padding: 5px 8px;
+    border-radius: 7px;
+    white-space: nowrap;
+  }
+
+  /* Audit strip */
+  .audit-col {
+    background: #faf8ff;
+    padding: 16px;
+  }
+  .audit-col h3 {
+    margin: 0 0 4px;
+    font-size: 13px;
+    font-weight: 750;
+    color: var(--audit);
+  }
+  .audit-col .audit-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin: 0 0 12px;
+  }
+  .audit-idle {
+    font-size: 12px;
+    color: var(--muted);
+    padding: 16px 0;
+  }
+  .audit-block {
+    display: none;
+  }
+  .audit-block.visible { display: block; }
+  .audit-meta {
+    font-size: 11px;
+    background: #fff;
+    border: 1px solid #e9d5ff;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+  }
+  .audit-meta dt {
+    color: var(--muted);
+    font-weight: 600;
+    margin-top: 6px;
+  }
+  .audit-meta dt:first-child { margin-top: 0; }
+  .audit-meta dd {
+    margin: 2px 0 0;
+    font-weight: 650;
+    color: var(--ink);
+  }
+  .audit-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .audit-list li {
+    font-size: 11px;
+    background: #fff;
+    border: 1px solid #e9d5ff;
+    border-radius: 8px;
+    padding: 8px 10px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .audit-list .tag {
+    flex-shrink: 0;
+    font-size: 9px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    background: var(--audit-soft);
+    color: var(--audit);
+    padding: 2px 5px;
+    border-radius: 4px;
+  }
+
+  /* Footer */
+  .app-footer {
+    background: #f8fafc;
+    border-top: 1px solid var(--line);
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .app-footer strong { color: var(--ink); }
+
+  .page-footer {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<div class="concept-banner">
+  CONCEPT / DEMO
+  <span>— Thought-leadership mockup · not a live product or marketplace</span>
+</div>
+
+<div class="page">
+  <p class="eyebrow">Andrew Paolillo · LinkedIn thought leadership</p>
+  <h1>Generative digital front door → marketplace of point solutions</h1>
+  <p class="sub">
+    Stable chassis stays put. Generative workspace assembles suggested next steps and a curated
+    module marketplace from intent — then shows an audit of what the model composed.
+  </p>
+
+  <div class="legend">
+    <span class="pill"><span class="dot fixed"></span> Fixed chassis (never moves)</span>
+    <span class="pill"><span class="dot compose"></span> Generative compose</span>
+    <span class="pill"><span class="dot audit"></span> Teaching audit</span>
+  </div>
+
+  <div class="context-bar">
+    <label>Member context</label>
+    <div class="toggle" role="group" aria-label="Context toggle">
+      <button type="button" id="ctx-plan" class="active" data-ctx="plan">Regional health plan</button>
+      <button type="button" id="ctx-cash" data-ctx="cash">Cash-pay clinic</button>
+    </div>
+    <div class="persona-chip" id="persona-label">Jordan M. · Age 42 · Plan: Summit Regional HMO</div>
+  </div>
+
+  <div class="app" id="app">
+    <!-- FIXED CHASSIS -->
+    <header class="chassis" aria-label="Fixed chassis">
+      <div class="logo">
+        <div class="logo-mark">DF</div>
+        <span id="brand-name">Summit Care</span>
+      </div>
+      <nav class="nav-fixed" aria-label="Always-available">
+        <a href="#" onclick="return false;">Account</a>
+        <a href="#" onclick="return false;">Help</a>
+        <a href="#" class="urgent" onclick="return false;">Urgent care</a>
+      </nav>
+      <div class="account">
+        <div class="avatar" id="avatar">JM</div>
+        <span id="account-name">Jordan M.</span>
+      </div>
+    </header>
+
+    <!-- GENERATIVE WORKSPACE -->
+    <section class="workspace" aria-label="Generative workspace">
+      <span class="zone-label compose">Generative workspace — assembles on intent</span>
+      <div class="prompt-wrap">
+        <div class="prompt-input">
+          <span aria-hidden="true" style="color:#94a3b8;font-size:16px;">✦</span>
+          <input id="prompt" type="text" placeholder="What do you need today?" autocomplete="off" />
+        </div>
+        <button type="button" class="btn-compose" id="btn-compose">Assemble UI</button>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Scenario chips"></div>
+      <div class="status-line" id="status"></div>
+    </section>
+
+    <div class="body-grid">
+      <div class="main-col">
+        <div class="empty-state" id="empty">
+          <div class="illus">◇</div>
+          <h2>Workspace is empty until you compose</h2>
+          <p>Pick a scenario chip or type an intent. The model will assemble suggested next steps and a marketplace of point-solution modules.</p>
+        </div>
+
+        <div class="nba-section" id="nba-section">
+          <div class="section-h">
+            <span class="zone-label compose" style="margin:0">Suggested next steps</span>
+          </div>
+          <div class="nba-strip" id="nba-strip"></div>
+        </div>
+
+        <div class="market-section" id="market-section">
+          <div class="section-h">
+            <span class="zone-label compose" style="margin:0">Marketplace modules</span>
+            <span style="font-size:12px;color:var(--muted);font-weight:500;">Point solutions matched to this intent</span>
+          </div>
+          <div class="market-grid" id="market-grid"></div>
+        </div>
+      </div>
+
+      <!-- AUDIT -->
+      <aside class="audit-col" aria-label="Composition audit">
+        <span class="zone-label audit">Teaching label</span>
+        <h3>What the model composed</h3>
+        <p class="audit-sub">Audit strip — catalog version &amp; components used</p>
+        <div class="audit-idle" id="audit-idle">Submit an intent to see the composition audit.</div>
+        <div class="audit-block" id="audit-block">
+          <dl class="audit-meta" id="audit-meta"></dl>
+          <ul class="audit-list" id="audit-list"></ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="app-footer">
+      <strong>Concept for LinkedIn thought leadership</strong> — not a shipped marketplace · fictional vendors · Demo only
+    </footer>
+  </div>
+
+  <p class="page-footer">
+    No HIPAA claims · No real competitor logos · Generic clinical language only · © concept mockup
+  </p>
+</div>
+
+<script>
+(function () {
+  const CATALOG_VERSION = "catalog-v0.4.2-demo";
+  const COMPOSER_VERSION = "compose-engine-demo-1.3";
+
+  const personas = {
+    plan: {
+      brand: "Summit Care",
+      label: "Jordan M. · Age 42 · Plan: Summit Regional HMO",
+      name: "Jordan M.",
+      avatar: "JM",
+      chips: [
+        { id: "pcp", label: "Find a new PCP", prompt: "I need to find a new primary care doctor near me" },
+        { id: "mental", label: "Mental health support", prompt: "I'd like confidential mental health support options" },
+        { id: "rx", label: "Refill & pharmacy", prompt: "Help me manage prescriptions and find lower-cost pharmacy options" },
+        { id: "benefits", label: "Check benefits", prompt: "What are my benefits for specialty care and labs this year?" },
+        { id: "chronic", label: "Manage a condition", prompt: "Help me stay on track with my care plan, labs, and appointments" }
+      ]
+    },
+    cash: {
+      brand: "Northside Direct Care",
+      label: "Alex R. · Age 38 · Cash-pay · Concierge clinic",
+      name: "Alex R.",
+      avatar: "AR",
+      chips: [
+        { id: "visit", label: "Book a visit", prompt: "I want to book a same-week visit and see cash pricing upfront" },
+        { id: "labs", label: "Order labs", prompt: "I need labs ordered and results explained in plain language" },
+        { id: "wellness", label: "Wellness & habits", prompt: "Help me build better sleep and stress habits with coaching" },
+        { id: "specialty", label: "Specialty referral", prompt: "I need a specialty referral and help coordinating follow-up" },
+        { id: "track", label: "Stay on protocol", prompt: "Help me track adherence, upcoming labs, and my visit schedule" }
+      ]
+    }
+  };
+
+  // Module catalog — fictional vendors
+  const MODULES = {
+    "find-care": {
+      name: "Care Finder",
+      vendor: "Pathly",
+      category: "nav",
+      icon: "◎",
+      why: { plan: "In-network PCPs within 8 mi matching your preferences", cash: "Local clinicians with transparent cash rates" }
+    },
+    "symptom-triage": {
+      name: "Symptom Guide",
+      vendor: "Clarion Health",
+      category: "nav",
+      icon: "✚",
+      why: { plan: "Routes non-urgent concerns before ER use", cash: "Helps decide visit vs. self-care before booking" }
+    },
+    "bh-access": {
+      name: "Behavioral Access",
+      vendor: "Mindbridge",
+      category: "behavioral",
+      icon: "◉",
+      why: { plan: "Confidential counseling slots with plan coverage flags", cash: "Cash-rate therapists & coaches with availability" }
+    },
+    "coaching": {
+      name: "Habit Coach",
+      vendor: "Stridewell",
+      category: "behavioral",
+      icon: "△",
+      why: { plan: "Sleep & stress coaching covered under wellness benefit", cash: "Short coaching packs with clear cash pricing" }
+    },
+    "rx-savings": {
+      name: "Rx Navigator",
+      vendor: "Pillwise",
+      category: "benefits",
+      icon: "℞",
+      why: { plan: "Formulary + lower-cost pharmacy alternatives", cash: "Cash coupon & pharmacy price compare" }
+    },
+    "benefits-lens": {
+      name: "Benefits Lens",
+      vendor: "Coveright",
+      category: "benefits",
+      icon: "$",
+      why: { plan: "Remaining deductible & specialty/lab coverage snapshot", cash: "Visit & lab price sheet for this clinic" }
+    },
+    "specialty-coord": {
+      name: "Specialty Bridge",
+      vendor: "Referly",
+      category: "specialty",
+      icon: "◈",
+      why: { plan: "In-network specialty slots + prior-auth status", cash: "Referral packet + cash specialist options" }
+    },
+    "protocol-tracker": {
+      name: "Protocol Tracker",
+      vendor: "Continuum Labs",
+      category: "specialty",
+      icon: "▣",
+      why: { plan: "Adherence check-ins, lab reminders, visit schedule", cash: "Adherence, labs, and schedule in one care board" }
+    },
+    "lab-results": {
+      name: "Lab Explainer",
+      vendor: "Plainlab",
+      category: "specialty",
+      icon: "▦",
+      why: { plan: "Plain-language results tied to your care plan", cash: "Order status + plain-language result summary" }
+    },
+    "urgent-alt": {
+      name: "Care Alternatives",
+      vendor: "RightSite",
+      category: "nav",
+      icon: "⚡",
+      why: { plan: "Urgent care & virtual options vs. ER", cash: "Same-day slots vs. after-hours options" }
+    }
+  };
+
+  // Scenario → NBA + module IDs
+  const SCENARIOS = {
+    // plan
+    pcp: {
+      match: /pcp|primary|doctor|find.*care|new.*doctor/i,
+      nbas: [
+        { rank: "1 · Next", title: "Confirm preferred ZIP & hours", why: "Narrows Care Finder results" },
+        { rank: "2", title: "Review in-network filters", why: "Avoids surprise out-of-network" },
+        { rank: "3", title: "Book intro visit", why: "Locks a slot once you pick" }
+      ],
+      modules: ["find-care", "symptom-triage", "benefits-lens", "urgent-alt"]
+    },
+    mental: {
+      match: /mental|counsel|therap|behavioral|stress|anxiety|depression/i,
+      nbas: [
+        { rank: "1 · Next", title: "Choose modality (video / in-person)", why: "Shapes Behavioral Access inventory" },
+        { rank: "2", title: "Confirm coverage flags", why: "Shows what the plan covers" },
+        { rank: "3", title: "Optional habit coaching", why: "Pairs therapy with daily support" }
+      ],
+      modules: ["bh-access", "coaching", "benefits-lens", "symptom-triage"]
+    },
+    rx: {
+      match: /refill|rx|pharm|prescription|medication/i,
+      nbas: [
+        { rank: "1 · Next", title: "List active prescriptions", why: "Feeds Rx Navigator" },
+        { rank: "2", title: "Compare pharmacy prices", why: "Surfaces lower-cost options" },
+        { rank: "3", title: "Set refill reminders", why: "Reduces missed doses" }
+      ],
+      modules: ["rx-savings", "protocol-tracker", "benefits-lens", "find-care"]
+    },
+    benefits: {
+      match: /benefit|coverage|deductible|cost|what.*covered/i,
+      nbas: [
+        { rank: "1 · Next", title: "Open benefits snapshot", why: "Deductible & specialty/lab remaining" },
+        { rank: "2", title: "Estimate a specialty visit", why: "Uses Benefits Lens calculator" },
+        { rank: "3", title: "Save preferred facilities", why: "Speeds future estimates" }
+      ],
+      modules: ["benefits-lens", "specialty-coord", "lab-results", "rx-savings"]
+    },
+    chronic: {
+      match: /condition|chronic|care plan|track|adherence|protocol|labs|schedule|manage/i,
+      nbas: [
+        { rank: "1 · Next", title: "Review adherence streak", why: "Protocol Tracker highlight" },
+        { rank: "2", title: "Upcoming labs & visits", why: "Calendar + reminders" },
+        { rank: "3", title: "Message care team", why: "If something looks off" }
+      ],
+      modules: ["protocol-tracker", "lab-results", "specialty-coord", "coaching", "rx-savings"]
+    },
+    // cash
+    visit: {
+      match: /book|visit|appointment|same.?week|see.*(doctor|clinician)/i,
+      nbas: [
+        { rank: "1 · Next", title: "See cash price sheet", why: "No surprise fees" },
+        { rank: "2", title: "Pick a same-week slot", why: "Care Finder + clinic calendar" },
+        { rank: "3", title: "Pre-visit questionnaire", why: "Shortens time in clinic" }
+      ],
+      modules: ["find-care", "benefits-lens", "symptom-triage", "urgent-alt"]
+    },
+    labs: {
+      match: /lab|blood|results|order labs/i,
+      nbas: [
+        { rank: "1 · Next", title: "Select lab panel", why: "Cash menu with clear prices" },
+        { rank: "2", title: "Schedule draw", why: "Clinic or partner site" },
+        { rank: "3", title: "Get plain-language results", why: "Lab Explainer when ready" }
+      ],
+      modules: ["lab-results", "protocol-tracker", "benefits-lens", "find-care"]
+    },
+    wellness: {
+      match: /wellness|habit|sleep|coach|stress habit/i,
+      nbas: [
+        { rank: "1 · Next", title: "Pick a focus (sleep / stress)", why: "Routes Habit Coach pack" },
+        { rank: "2", title: "Set weekly check-ins", why: "Light accountability" },
+        { rank: "3", title: "Optional clinician review", why: "If symptoms escalate" }
+      ],
+      modules: ["coaching", "bh-access", "protocol-tracker", "symptom-triage"]
+    },
+    specialty: {
+      match: /specialt|referral|coordinat|follow.?up/i,
+      nbas: [
+        { rank: "1 · Next", title: "Build referral packet", why: "Specialty Bridge prep" },
+        { rank: "2", title: "Compare cash specialists", why: "Transparent rates" },
+        { rank: "3", title: "Schedule follow-up here", why: "Closes the loop" }
+      ],
+      modules: ["specialty-coord", "lab-results", "protocol-tracker", "find-care"]
+    },
+    track: {
+      match: /protocol|adherence|stay on|tracker/i,
+      nbas: [
+        { rank: "1 · Next", title: "Open care board", why: "Adherence · labs · schedule" },
+        { rank: "2", title: "Confirm next lab date", why: "Avoids gaps" },
+        { rank: "3", title: "Nudge preferences", why: "SMS vs. app reminders" }
+      ],
+      modules: ["protocol-tracker", "lab-results", "rx-savings", "coaching"]
+    }
+  };
+
+  let ctx = "plan";
+  let assembling = false;
+
+  const $ = (id) => document.getElementById(id);
+  const promptEl = $("prompt");
+  const chipsEl = $("chips");
+  const statusEl = $("status");
+  const emptyEl = $("empty");
+  const nbaSection = $("nba-section");
+  const nbaStrip = $("nba-strip");
+  const marketSection = $("market-section");
+  const marketGrid = $("market-grid");
+  const auditIdle = $("audit-idle");
+  const auditBlock = $("audit-block");
+  const auditMeta = $("audit-meta");
+  const auditList = $("audit-list");
+  const btnCompose = $("btn-compose");
+
+  function setContext(next) {
+    ctx = next;
+    document.querySelectorAll(".toggle button").forEach((b) => {
+      b.classList.toggle("active", b.dataset.ctx === next);
+    });
+    const p = personas[next];
+    $("brand-name").textContent = p.brand;
+    $("persona-label").textContent = p.label;
+    $("account-name").textContent = p.name;
+    $("avatar").textContent = p.avatar;
+    renderChips();
+    resetCompose();
+  }
+
+  function renderChips() {
+    chipsEl.innerHTML = "";
+    personas[ctx].chips.forEach((c) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip";
+      b.textContent = c.label;
+      b.addEventListener("click", () => {
+        document.querySelectorAll(".chip").forEach((x) => x.classList.remove("active"));
+        b.classList.add("active");
+        promptEl.value = c.prompt;
+        compose();
+      });
+      chipsEl.appendChild(b);
+    });
+  }
+
+  function resetCompose() {
+    emptyEl.style.display = "";
+    nbaSection.classList.remove("visible");
+    marketSection.classList.remove("visible");
+    auditIdle.style.display = "";
+    auditBlock.classList.remove("visible");
+    nbaStrip.innerHTML = "";
+    marketGrid.innerHTML = "";
+    statusEl.textContent = "";
+    statusEl.className = "status-line";
+    promptEl.value = "";
+  }
+
+  function resolveScenario(text) {
+    const t = text.trim();
+    for (const key of Object.keys(SCENARIOS)) {
+      if (SCENARIOS[key].match.test(t)) return { key, ...SCENARIOS[key] };
+    }
+    // default fallback by context
+    if (ctx === "cash") return { key: "visit", ...SCENARIOS.visit };
+    return { key: "pcp", ...SCENARIOS.pcp };
+  }
+
+  function catLabel(cat) {
+    return ({ nav: "Nav", behavioral: "Behavioral", specialty: "Specialty", benefits: "Benefits" })[cat] || cat;
+  }
+
+  function compose() {
+    const text = promptEl.value.trim();
+    if (!text || assembling) return;
+    assembling = true;
+    btnCompose.disabled = true;
+    statusEl.className = "status-line assembling";
+    statusEl.textContent = "Composing workspace from intent · matching catalog modules…";
+
+    emptyEl.style.display = "none";
+    nbaSection.classList.remove("visible");
+    marketSection.classList.remove("visible");
+    auditIdle.style.display = "none";
+    auditBlock.classList.remove("visible");
+
+    const scenario = resolveScenario(text);
+
+    setTimeout(() => {
+      // NBA
+      nbaStrip.innerHTML = "";
+      scenario.nbas.forEach((n) => {
+        const d = document.createElement("div");
+        d.className = "nba-card";
+        d.innerHTML = `<div class="nba-rank">${n.rank}</div><div class="nba-title">${n.title}</div><div class="nba-why">${n.why}</div>`;
+        nbaStrip.appendChild(d);
+      });
+      nbaSection.classList.add("visible");
+
+      // Marketplace
+      marketGrid.innerHTML = "";
+      scenario.modules.forEach((id) => {
+        const m = MODULES[id];
+        const card = document.createElement("article");
+        card.className = "mod-card";
+        card.innerHTML = `
+          <div class="mod-top">
+            <div class="mod-icon cat-${m.category}">${m.icon}</div>
+            <span class="cat-badge ${m.category}">${catLabel(m.category)}</span>
+          </div>
+          <h3 class="mod-name">${m.name}</h3>
+          <p class="mod-vendor">${m.vendor} · point solution</p>
+          <p class="mod-why"><strong>Why recommended:</strong> ${m.why[ctx]}</p>
+          <div class="mod-actions">
+            <button type="button" class="btn-open" disabled>Open</button>
+            <span class="demo-badge">Demo</span>
+          </div>`;
+        marketGrid.appendChild(card);
+      });
+      marketSection.classList.add("visible");
+
+      // Audit
+      const components = [
+        { tag: "chassis", text: "Fixed top bar (logo, Account, Help, Urgent care)" },
+        { tag: "steps", text: `Suggested next steps × ${scenario.nbas.length}` },
+        ...scenario.modules.map((id) => {
+          const m = MODULES[id];
+          return { tag: m.category, text: `${m.name} (${m.vendor})` };
+        }),
+        { tag: "audit", text: "Composition audit panel" }
+      ];
+      auditMeta.innerHTML = `
+        <dt>Catalog version</dt><dd>${CATALOG_VERSION}</dd>
+        <dt>Composer</dt><dd>${COMPOSER_VERSION}</dd>
+        <dt>Context</dt><dd>${ctx === "plan" ? "Regional health plan member" : "Cash-pay clinic patient"}</dd>
+        <dt>Intent match</dt><dd>${scenario.key} · ${scenario.modules.length} modules</dd>
+        <dt>Prompt</dt><dd style="font-weight:500;word-break:break-word">${escapeHtml(text)}</dd>`;
+      auditList.innerHTML = components.map((c) =>
+        `<li><span class="tag">${c.tag}</span><span>${c.text}</span></li>`
+      ).join("");
+      auditBlock.classList.add("visible");
+
+      statusEl.className = "status-line";
+      statusEl.textContent = `Assembled · ${scenario.modules.length} marketplace modules · ${scenario.nbas.length} suggested next steps`;
+      assembling = false;
+      btnCompose.disabled = false;
+    }, 720);
+  }
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+  }
+
+  $("ctx-plan").addEventListener("click", () => setContext("plan"));
+  $("ctx-cash").addEventListener("click", () => setContext("cash"));
+  btnCompose.addEventListener("click", compose);
+  promptEl.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") compose();
+  });
+
+  setContext("plan");
+})();
+</script>
+</body>
+</html>
